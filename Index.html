@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Long Bảo 88 A.I Baccarat</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #32CD32;
+            --accent-color: #FF6347;
+            --bg-gradient: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+            --card-bg: rgba(51, 51, 51, 0.8);
+            --text-color: #FFFFFF;
+            --success-color: #28a745;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        #matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        #container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: clamp(24px, 5vw, 45px);
+            color: var(--primary-color);
+            text-shadow: 2px 2px 5px #000000;
+            margin: 15px 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        #inputField {
+            font-size: 16px;
+            padding: 12px 15px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            border: 2px solid var(--primary-color);
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        #inputField:focus {
+            outline: none;
+            border-color: var(--success-color);
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+        }
+        
+        #startButton {
+            background-color: var(--secondary-color);
+            color: #000;
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(50, 205, 50, 0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        #startButton:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+        
+        #startButton:hover:not(:disabled) {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        
+        #result {
+            margin: 20px 0;
+            font-size: clamp(20px, 5vw, 30px);
+            font-weight: bold;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 5px #000000;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #gif-container {
+            margin: 20px auto;
+            max-width: 300px;
+        }
+        
+        #gif {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        #penguin-dialogue {
+            margin: 10px auto;
+            background: rgba(0, 0, 0, 0.85);
+            color: #00ff99;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(14px, 3vw, 16px);
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 12px #00ff99;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        #tableSelect {
+            margin: 15px 0;
+            font-size: 16px;
+            padding: 10px 15px;
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        #tableSelect:hover {
+            background-color: var(--success-color);
+        }
+        
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        
+        #progressBar {
+            width: 100%;
+            background-color: #333;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        #progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), #FFA500);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        #progressText {
+            font-size: 16px;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        #resultTable {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        
+        #resultTable div {
+            padding: 15px;
+            font-size: 16px;
+            text-align: center;
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        #resultTable div.active {
+            color: black;
+            background-color: var(--accent-color);
+            box-shadow: 0px 0px 15px 5px rgba(255, 99, 71, 0.7);
+            transform: scale(1.05);
+        }
+        
+        #chart-container {
+            margin: 30px auto;
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--primary-color);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (min-width: 768px) {
+            #resultTable {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .input-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            #inputField {
+                margin-bottom: 0;
+                margin-right: 10px;
+                width: 300px;
+            }
+            
+            #startButton {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix-rain"></canvas>
+    
+    <div id="container">
+        <h1>Long Bảo 88 A.I Baccarat</h1>
+        
+        <div id="gif-container">
+            <img id="gif" src="giphy.gif" alt="Penguin gif">
+        </div>
+
+        <div id="penguin-dialogue">
+          Tôi là chim cánh cụt đây!
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="inputField" placeholder="Nhập mã hợp lệ (10 mã)">
+            <button id="startButton" onclick="startPrediction()" disabled>Start</button>
+        </div>
+        
+        <select id="tableSelect" onchange="selectTable()">
+            <option value="">Chọn Bàn</option>
+            <option value="C01">BÀN C01</option>
+            <option value="C02">BÀN C02</option>
+            <option value="C04">BÀN C04</option>
+            <option value="C05">BÀN C05</option>
+            <option value="C06">BÀN C06</option>
+            <option value="C15">BÀN C15</option>
+            <option value="C16">BÀN C16</option>
+            <option value="C10">BÀN C10</option>
+            <option value="BACARAT 1">BACARAT 1</option>
+            <option value="BACARAT 2">BACARAT 2</option>
+            <option value="BACARAT 3">BACARAT 3</option>
+            <option value="BACARAT 4">BACARAT 4</option>
+            <option value="BACARAT 10">BACARAT 10</option>
+        </select>
+        
+        <div id="result"></div>
+
+        <div class="progress-container">
+            <div id="progressBar"><div id="progress"></div></div>
+            <div id="progressText">0%</div>
+        </div>
+
+        <div id="resultTable">
+            <div id="player" onclick="highlightResult('player')">Nhà Con</div>
+            <div id="banker" onclick="highlightResult('banker')">Nhà Cái</div>
+            <div id="tie" onclick="highlightResult('tie')">Hòa</div>
+            <div id="pair_player" onclick="highlightResult('pair_player')">Con Đôi</div>
+            <div id="pair_banker" onclick="highlightResult('pair_banker')">Cái Đôi</div>
+            <div id="longbao" onclick="highlightResult('longbao')">Long Bảo</div>
+        </div>
+        
+        <div id="chart-container">
+            <canvas id="resultChart"></canvas>
+        </div>
+    </div>
+    
+    <audio id="penguin-sound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
+
+    <script>
+        // Matrix Rain Effect
+        const matrixCanvas = document.getElementById('matrix-rain');
+        const matrixCtx = matrixCanvas.getContext('2d');
+        
+        function resizeMatrix() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        }
+        
+        resizeMatrix();
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+        
+        const alphabet = katakana + latin + nums + symbols;
+        
+        const fontSize = 16;
+        const columns = matrixCanvas.width / fontSize;
+        
+        const rainDrops = [];
+        
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = Math.random() * -100;
+        }
+        
+        const drawMatrix = () => {
+            matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            
+            matrixCtx.fillStyle = '#0F0';
+            matrixCtx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                matrixCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(drawMatrix, 30);
+        
+        window.addEventListener('resize', () => {
+            resizeMatrix();
+        });
+
+        // Main application code
+        let codes = ["code1", "code2", "code3", "code4", "code5", "code6", "code7", "code8", "code9", "code10"];
+        let validCodeEntered = false;
+
+        document.getElementById("inputField").addEventListener("input", function() {
+            let enteredCode = document.getElementById("inputField").value.trim();
+            validCodeEntered = codes.includes(enteredCode);
+            document.getElementById("startButton").disabled = !validCodeEntered;
+            
+            if (validCodeEntered) {
+                this.style.borderColor = "var(--success-color)";
+                this.style.boxShadow = "0 0 10px rgba(40, 167, 69, 0.5)";
+            } else {
+                this.style.borderColor = "var(--primary-color)";
+                this.style.boxShadow = "none";
+            }
+        });
+
+        function startPrediction() {
+            let resultText = "Đang tính toán...";
+            document.getElementById("result").innerText = resultText;
+            document.getElementById("startButton").disabled = true;
+            showRandomCountdownLine();
+
+            // Reset progress bar
+            document.getElementById("progress").style.width = "0%";
+            document.getElementById("progressText").innerText = "0%";
+
+            // Bắt đầu thanh loading
+            let progress = 0;
+            let interval = setInterval(function() {
+                progress += 2;
+                document.getElementById("progress").style.width = progress + "%";
+                document.getElementById("progressText").innerText = progress + "%";
+                
+                // Hiển thị dòng thoại ngẫu nhiên khi đang loading
+                if (progress % 20 === 0) {
+                    showRandomCountdownLine();
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    showResult();
+                    document.getElementById("startButton").disabled = !validCodeEntered;
+                }
+            }, 100);
+        }
+
+        function showResult() {
+            let randomValue = Math.random();
+            let result;
+
+            // Kết quả chính: Nhà Con hoặc Nhà Cái
+            let mainResult = randomValue < 0.5 ? "Nhà Con" : "Nhà Cái";
+            // Kết quả phụ
+            let additionalResult = Math.random() < 0.5 ? "Hòa" : Math.random() < 0.5 ? "Con Đôi" : Math.random() < 0.5 ? "Cái Đôi" : "Long Bảo";
+
+            result = mainResult + " - " + additionalResult;
+            document.getElementById("result").innerText = result;
+
+            // Chọn kết quả chính
+            highlightResult(mainResult === "Nhà Con" ? 'player' : 'banker');
+            // Chọn kết quả phụ
+            highlightResultBasedOnAdditionalResult(additionalResult);
+            updateChart(mainResult, additionalResult);
+            
+            // Hiển thị phản ứng của chim cánh cụt
+            showResultReaction(mainResult === "Nhà Con" ? 'player' : 'banker');
+        }
+
+        function highlightResultBasedOnAdditionalResult(additionalResult) {
+            if (additionalResult === "Hòa") {
+                highlightResult('tie');
+            } else if (additionalResult === "Con Đôi") {
+                highlightResult('pair_player');
+            } else if (additionalResult === "Cái Đôi") {
+                highlightResult('pair_banker');
+            } else if (additionalResult === "Long Bảo") {
+                highlightResult('longbao');
+            }
+        }
+
+        function highlightResult(result) {
+            const cells = document.querySelectorAll('#resultTable div');
+            cells.forEach(cell => cell.classList.remove('active'));
+            document.getElementById(result).classList.add('active');
+        }
+
+        function selectTable() {
+            let table = document.getElementById("tableSelect").value;
+            if (table) {
+                showPenguinDialogue(`Bạn đã chọn bàn: ${table}. Chúc may mắn!`);
+            }
+        }
+
+        // Biểu đồ kết quả
+        let chartData = {
+            labels: ['Nhà Con', 'Nhà Cái', 'Hòa', 'Con Đôi', 'Cái Đôi', 'Long Bảo'],
+            datasets: [{
+                label: 'Tỷ lệ kết quả',
+                data: [0, 0, 0, 0, 0, 0],
+                backgroundColor: [
+                    'rgba(255, 215, 0, 0.7)',
+                    'rgba(255, 99, 71, 0.7)',
+                    'rgba(50, 205, 50, 0.7)',
+                    'rgba(30, 144, 255, 0.7)',
+                    'rgba(255, 69, 0, 0.7)',
+                    'rgba(138, 43, 226, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 215, 0, 1)',
+                    'rgba(255, 99, 71, 1)',
+                    'rgba(50, 205, 50, 1)',
+                    'rgba(30, 144, 255, 1)',
+                    'rgba(255, 69, 0, 1)',
+                    'rgba(138, 43, 226, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        let resultChart = new Chart(document.getElementById('resultChart'), {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#FFFFFF'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#FFFFFF'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#FFFFFF'
+                        }
+                    }
+                }
+            }
+        });
+
+        function updateChart(mainResult, additionalResult) {
+            if (mainResult === "Nhà Con") chartData.datasets[0].data[0]++;
+            else chartData.datasets[0].data[1]++;
+
+            if (additionalResult === "Hòa") chartData.datasets[0].data[2]++;
+            else if (additionalResult === "Con Đôi") chartData.datasets[0].data[3]++;
+            else if (additionalResult === "Cái Đôi") chartData.datasets[0].data[4]++;
+            else if (additionalResult === "Long Bảo") chartData.datasets[0].data[5]++;
+
+            resultChart.update();
+        }
+
+        // Penguin dialogue system
+        const penguinLines = {
+            start: [
+                "Tôi cảm thấy hôm nay bạn sẽ đỏ đấy!",
+                "Sẵn sàng chưa? Cánh cụt dự đoán hôm nay sẽ bất ngờ lắm!",
+                "Bắt đầu rồi nhé! Cược thông minh - thắng thật nhanh!",
+                "Chào mừng đến với Long Bảo 88!",
+                "Hôm nay là một ngày may mắn, bạn tin không?"
+            ],
+            countdown: [
+                "Bạn đặt cửa nào thế? Tôi thì luôn nghiêng về Nhà Con!",
+                "Thở đều, thả lỏng, đợi kết quả như đợi cá bơi vào lưới!",
+                "Linh cảm của tôi nói... Banker!",
+                "AI đang phân tích dữ liệu...",
+                "Kết quả sắp có rồi, hồi hộp quá!",
+                "Tôi thấy bạn sẽ thắng lớn đấy!"
+            ],
+            result: {
+                player: "Tuyệt! Nhà Con thắng rồi! Tôi biết mà!",
+                banker: "Quá chuẩn! Nhà Cái lần này ăn chắc!",
+                tie: "Hòa kìa! Cực hiếm nha - ăn lớn đó!",
+                pair_player: "Con Đôi! Thật là một phát hiện tuyệt vời!",
+                pair_banker: "Cái Đôi! Bạn có thấy tôi giỏi không?",
+                longbao: "Long Bảo! Hiếm có khó tìm!",
+                default: "Kết quả bất ngờ quá ha!"
+            }
+        };
+
+        function showPenguinDialogue(message) {
+            const dialogue = document.getElementById('penguin-dialogue');
+            const sound = document.getElementById('penguin-sound');
+            dialogue.style.animation = 'none';
+            void dialogue.offsetWidth; // Trigger reflow
+            dialogue.style.animation = 'fadeIn 0.5s ease-in-out';
+            dialogue.innerText = message;
+            sound.currentTime = 0;
+            sound.play();
+        }
+
+        function showRandomStartLine() {
+            const line = penguinLines.start[Math.floor(Math.random() * penguinLines.start.length)];
+            showPenguinDialogue(line);
+        }
+
+        function showRandomCountdownLine() {
+            const line = penguinLines.countdown[Math.floor(Math.random() * penguinLines.countdown.length)];
+            showPenguinDialogue(line);
+        }
+
+        function showResultReaction(result) {
+            let line = penguinLines.result[result.toLowerCase()] || penguinLines.result.default;
+            showPenguinDialogue(line);
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            showRandomStartLine();
+            resizeMatrix();
+        });
+    </script>
+</body>
+</html>
