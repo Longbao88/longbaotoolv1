@@ -488,7 +488,7 @@
             <span class="close-button" onclick="closePremiumModal()">&times;</span>
             <h2>Nâng cấp lên Bản Premium</h2>
             <p>Mở khóa khả năng dự đoán nâng cao và tăng tỷ lệ thắng của bạn với bản Premium của chúng tôi!</p>
-            <p class="modal-price">Chỉ từ <span>$99.99</span>/tháng</p>
+            <p class="modal-price">Chỉ từ <span>$150USD</span>/tháng</p>
             <p>Liên hệ hỗ trợ để biết thêm chi tiết và cách nâng cấp!</p>
             <button class="modal-button" onclick="contactSupport()">Liên hệ hỗ trợ</button>
         </div>
@@ -547,7 +547,7 @@
         });
 
         // Main application code
-        let codes = ["code1", "code2", "code3", "code4", "code5", "code6", "code7", "code8", "code9", "code10"];
+        let codes = ["test1", "code2", "code3", "code4", "code5", "code6", "code7", "code8", "code9", "code10"];
         let validCodeEntered = false;
 
         document.getElementById("inputField").addEventListener("input", function() {
@@ -792,7 +792,8 @@
         }
 
         function contactSupport() {
-            showPenguinDialogue("Tuyệt vời! Hãy liên hệ với chúng tôi qua email: support@longbao88.com hoặc số điện thoại: +84 123 456 789 để nâng cấp ngay!");
+            window.open("https://t.me/longbaoF168", "_blank"); // Mở liên kết Telegram trong tab mới
+            showPenguinDialogue("Tuyệt vời! Hãy liên hệ với chúng tôi qua Telegram để nâng cấp ngay!");
             closePremiumModal(); // Close modal after showing penguin dialogue
         }
 
