@@ -16,13 +16,13 @@
             --text-color: #FFFFFF;
             --success-color: #28a745;
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
         body {
             background: var(--bg-gradient);
             color: var(--text-color);
@@ -32,7 +32,7 @@
             position: relative;
             overflow-x: hidden;
         }
-        
+
         #matrix-rain {
             position: fixed;
             top: 0;
@@ -42,7 +42,7 @@
             z-index: -1;
             opacity: 0.1;
         }
-        
+
         #container {
             padding: 20px;
             max-width: 1200px;
@@ -50,7 +50,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         h1 {
             font-size: clamp(24px, 5vw, 45px);
             color: var(--primary-color);
@@ -58,7 +58,7 @@
             margin: 15px 0;
             font-family: 'Orbitron', sans-serif;
         }
-        
+
         .input-group {
             display: flex;
             flex-direction: column;
@@ -66,7 +66,7 @@
             gap: 15px;
             margin-bottom: 20px;
         }
-        
+
         #inputField {
             font-size: 16px;
             padding: 12px 15px;
@@ -78,13 +78,13 @@
             color: var(--primary-color);
             transition: all 0.3s ease;
         }
-        
+
         #inputField:focus {
             outline: none;
             border-color: var(--success-color);
             box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
         }
-        
+
         #startButton {
             background-color: var(--secondary-color);
             color: #000;
@@ -99,17 +99,17 @@
             width: 100%;
             max-width: 400px;
         }
-        
+
         #startButton:disabled {
             background-color: #555;
             cursor: not-allowed;
         }
-        
+
         #startButton:hover:not(:disabled) {
             background-color: #218838;
             transform: translateY(-2px);
         }
-        
+
         #result {
             margin: 20px 0;
             font-size: clamp(20px, 5vw, 30px);
@@ -121,19 +121,19 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         #gif-container {
             margin: 20px auto;
             max-width: 300px;
         }
-        
+
         #gif {
             width: 100%;
             height: auto;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
-        
+
         #penguin-dialogue {
             margin: 10px auto;
             background: rgba(0, 0, 0, 0.85);
@@ -147,7 +147,7 @@
             box-shadow: 0 0 12px #00ff99;
             animation: fadeIn 0.5s ease-in-out;
         }
-        
+
         #tableSelect {
             margin: 15px 0;
             font-size: 16px;
@@ -161,17 +161,17 @@
             width: 100%;
             max-width: 400px;
         }
-        
+
         #tableSelect:hover {
             background-color: var(--success-color);
         }
-        
+
         .progress-container {
             width: 100%;
             max-width: 400px;
             margin: 20px auto;
         }
-        
+
         #progressBar {
             width: 100%;
             background-color: #333;
@@ -179,7 +179,7 @@
             border-radius: 10px;
             overflow: hidden;
         }
-        
+
         #progress {
             height: 100%;
             background: linear-gradient(90deg, var(--primary-color), #FFA500);
@@ -187,14 +187,14 @@
             width: 0%;
             transition: width 0.1s linear;
         }
-        
+
         #progressText {
             font-size: 16px;
             color: var(--primary-color);
             font-weight: bold;
             margin-top: 5px;
         }
-        
+
         #resultTable {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -203,7 +203,7 @@
             max-width: 600px;
             margin: 20px auto;
         }
-        
+
         #resultTable div {
             padding: 15px;
             font-size: 16px;
@@ -215,14 +215,14 @@
             border-radius: 10px;
             transition: all 0.3s ease;
         }
-        
+
         #resultTable div.active {
             color: black;
             background-color: var(--accent-color);
             box-shadow: 0px 0px 15px 5px rgba(255, 99, 71, 0.7);
             transform: scale(1.05);
         }
-        
+
         #chart-container {
             margin: 30px auto;
             width: 100%;
@@ -232,34 +232,186 @@
             border-radius: 10px;
             border: 1px solid var(--primary-color);
         }
-        
+
+        /* Premium Section Styles */
+        #premium-promo {
+            margin: 40px auto;
+            padding: 25px;
+            background: linear-gradient(90deg, #4b0082, #800080); /* Deep purple gradient */
+            border-radius: 15px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); /* Gold shadow */
+            max-width: 600px;
+            animation: pulseBorder 2s infinite alternate; /* Animated border */
+        }
+
+        #premium-promo h2 {
+            color: var(--primary-color);
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(20px, 4vw, 35px);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        #premium-promo p {
+            color: var(--text-color);
+            font-size: clamp(14px, 3vw, 18px);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        #premiumButton {
+            background-color: #FF4500; /* OrangeRed */
+            color: #FFF;
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(255, 69, 0, 0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #premiumButton:hover {
+            background-color: #CC3700; /* Darker OrangeRed */
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 20px rgba(255, 69, 0, 0.7);
+        }
+
+        /* Modal (Popup) Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a0033 0%, #330066 100%); /* Dark purple gradient */
+            margin: auto;
+            padding: 30px;
+            border: 2px solid var(--primary-color);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+            animation: fadeInScale 0.3s ease-out;
+            position: relative;
+        }
+
+        .modal-content h2 {
+            color: var(--primary-color);
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(22px, 4vw, 38px);
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        .modal-content p {
+            color: var(--text-color);
+            font-size: clamp(14px, 3vw, 18px);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .modal-price {
+            font-size: clamp(18px, 4vw, 28px);
+            font-weight: bold;
+            color: #00FF99; /* Bright green */
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px rgba(0, 255, 153, 0.7);
+        }
+
+        .modal-price span {
+            color: var(--primary-color);
+        }
+
+        .close-button {
+            color: var(--primary-color);
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--accent-color);
+            text-decoration: none;
+            transform: scale(1.1);
+        }
+
+        .modal-button {
+            background-color: var(--secondary-color);
+            color: #000;
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(50, 205, 50, 0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .modal-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        
+
+        @keyframes pulseBorder {
+            0% { border-color: var(--primary-color); }
+            100% { border-color: #FFA500; } /* Orange */
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         @media (min-width: 768px) {
             #resultTable {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .input-group {
                 flex-direction: row;
                 justify-content: center;
             }
-            
+
             #inputField {
                 margin-bottom: 0;
                 margin-right: 10px;
                 width: 300px;
             }
-            
+
             #startButton {
                 width: auto;
             }
@@ -268,10 +420,10 @@
 </head>
 <body>
     <canvas id="matrix-rain"></canvas>
-    
+
     <div id="container">
         <h1>Long Bảo 88 A.I Baccarat</h1>
-        
+
         <div id="gif-container">
             <img id="gif" src="giphy.gif" alt="Penguin gif">
         </div>
@@ -284,7 +436,7 @@
             <input type="text" id="inputField" placeholder="Nhập mã hợp lệ (10 mã)">
             <button id="startButton" onclick="startPrediction()" disabled>Start</button>
         </div>
-        
+
         <select id="tableSelect" onchange="selectTable()">
             <option value="">Chọn Bàn</option>
             <option value="C01">BÀN C01</option>
@@ -301,7 +453,7 @@
             <option value="BACARAT 4">BACARAT 4</option>
             <option value="BACARAT 10">BACARAT 10</option>
         </select>
-        
+
         <div id="result"></div>
 
         <div class="progress-container">
@@ -317,75 +469,92 @@
             <div id="pair_banker" onclick="highlightResult('pair_banker')">Cái Đôi</div>
             <div id="longbao" onclick="highlightResult('longbao')">Long Bảo</div>
         </div>
-        
+
         <div id="chart-container">
             <canvas id="resultChart"></canvas>
         </div>
+
+        <div id="premium-promo">
+            <h2>Nâng cấp lên Bản Premium</h2>
+            <p>Mở khóa khả năng dự đoán nâng cao và tăng tỷ lệ thắng của bạn với bản Premium của chúng tôi!</p>
+            <button id="premiumButton" onclick="showPremiumInfo()">MUA BẢN PREMIUM NGAY!</button>
+        </div>
     </div>
-    
+
     <audio id="penguin-sound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
+
+    <div id="premiumModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closePremiumModal()">&times;</span>
+            <h2>Nâng cấp lên Bản Premium</h2>
+            <p>Mở khóa khả năng dự đoán nâng cao và tăng tỷ lệ thắng của bạn với bản Premium của chúng tôi!</p>
+            <p class="modal-price">Chỉ từ <span>$99.99</span>/tháng</p>
+            <p>Liên hệ hỗ trợ để biết thêm chi tiết và cách nâng cấp!</p>
+            <button class="modal-button" onclick="contactSupport()">Liên hệ hỗ trợ</button>
+        </div>
+    </div>
 
     <script>
         // Matrix Rain Effect
         const matrixCanvas = document.getElementById('matrix-rain');
         const matrixCtx = matrixCanvas.getContext('2d');
-        
+
         function resizeMatrix() {
             matrixCanvas.width = window.innerWidth;
             matrixCanvas.height = window.innerHeight;
         }
-        
+
         resizeMatrix();
-        
+
         const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
         const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const nums = '0123456789';
         const symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
-        
+
         const alphabet = katakana + latin + nums + symbols;
-        
+
         const fontSize = 16;
         const columns = matrixCanvas.width / fontSize;
-        
+
         const rainDrops = [];
-        
+
         for (let x = 0; x < columns; x++) {
             rainDrops[x] = Math.random() * -100;
         }
-        
+
         const drawMatrix = () => {
             matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            
+
             matrixCtx.fillStyle = '#0F0';
             matrixCtx.font = fontSize + 'px monospace';
-            
+
             for (let i = 0; i < rainDrops.length; i++) {
                 const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
                 matrixCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-                
+
                 if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
                     rainDrops[i] = 0;
                 }
                 rainDrops[i]++;
             }
         };
-        
+
         setInterval(drawMatrix, 30);
-        
+
         window.addEventListener('resize', () => {
             resizeMatrix();
         });
 
         // Main application code
-        let codes = ["code112", "code2", "code3", "code4", "code5", "code6", "code7", "code8", "code9", "code10"];
+        let codes = ["code1", "code2", "code3", "code4", "code5", "code6", "code7", "code8", "code9", "code10"];
         let validCodeEntered = false;
 
         document.getElementById("inputField").addEventListener("input", function() {
             let enteredCode = document.getElementById("inputField").value.trim();
             validCodeEntered = codes.includes(enteredCode);
             document.getElementById("startButton").disabled = !validCodeEntered;
-            
+
             if (validCodeEntered) {
                 this.style.borderColor = "var(--success-color)";
                 this.style.boxShadow = "0 0 10px rgba(40, 167, 69, 0.5)";
@@ -411,12 +580,12 @@
                 progress += 2;
                 document.getElementById("progress").style.width = progress + "%";
                 document.getElementById("progressText").innerText = progress + "%";
-                
+
                 // Hiển thị dòng thoại ngẫu nhiên khi đang loading
                 if (progress % 20 === 0) {
                     showRandomCountdownLine();
                 }
-                
+
                 if (progress >= 100) {
                     clearInterval(interval);
                     showResult();
@@ -442,12 +611,13 @@
             // Chọn kết quả phụ
             highlightResultBasedOnAdditionalResult(additionalResult);
             updateChart(mainResult, additionalResult);
-            
+
             // Hiển thị phản ứng của chim cánh cụt
             showResultReaction(mainResult === "Nhà Con" ? 'player' : 'banker');
         }
 
         function highlightResultBasedOnAdditionalResult(additionalResult) {
+            document.querySelectorAll('#resultTable div').forEach(cell => cell.classList.remove('active')); // Clear all active
             if (additionalResult === "Hòa") {
                 highlightResult('tie');
             } else if (additionalResult === "Con Đôi") {
@@ -462,8 +632,12 @@
         function highlightResult(result) {
             const cells = document.querySelectorAll('#resultTable div');
             cells.forEach(cell => cell.classList.remove('active'));
-            document.getElementById(result).classList.add('active');
+            // Only add 'active' class to the main result. Additional results are handled separately.
+            if (result === 'player' || result === 'banker' || result === 'tie' || result === 'pair_player' || result === 'pair_banker' || result === 'longbao') {
+                document.getElementById(result).classList.add('active');
+            }
         }
+
 
         function selectTable() {
             let table = document.getElementById("tableSelect").value;
@@ -534,6 +708,12 @@
         });
 
         function updateChart(mainResult, additionalResult) {
+            // Reset all data points to 0 before updating
+            for (let i = 0; i < chartData.datasets[0].data.length; i++) {
+                chartData.datasets[0].data[i] = 0;
+            }
+
+            // Update based on the current prediction (simplified for single prediction display)
             if (mainResult === "Nhà Con") chartData.datasets[0].data[0]++;
             else chartData.datasets[0].data[1]++;
 
@@ -544,6 +724,7 @@
 
             resultChart.update();
         }
+
 
         // Penguin dialogue system
         const penguinLines = {
@@ -598,6 +779,31 @@
             let line = penguinLines.result[result.toLowerCase()] || penguinLines.result.default;
             showPenguinDialogue(line);
         }
+
+        // --- Premium Popup Functions ---
+        let premiumModal = document.getElementById('premiumModal'); // Get the modal element
+
+        function showPremiumInfo() {
+            premiumModal.style.display = 'flex'; // Show the modal using flex to center
+        }
+
+        function closePremiumModal() {
+            premiumModal.style.display = 'none'; // Hide the modal
+        }
+
+        function contactSupport() {
+            showPenguinDialogue("Tuyệt vời! Hãy liên hệ với chúng tôi qua email: support@longbao88.com hoặc số điện thoại: +84 123 456 789 để nâng cấp ngay!");
+            closePremiumModal(); // Close modal after showing penguin dialogue
+        }
+
+        // Close the modal if the user clicks anywhere outside of the modal content
+        window.onclick = function(event) {
+            if (event.target == premiumModal) {
+                closePremiumModal();
+            }
+        }
+        // --- End Premium Popup Functions ---
+
 
         // Initialize
         window.addEventListener('load', () => {
